@@ -1,0 +1,17 @@
+<.simple_form :let={f} for={@changeset} action={@action}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:name]} type="text" label="Name" />
+  <.input field={f[:body]} type="text" label="Body" />
+  <.input
+    field={f[:category]}
+    type="select"
+    label="Category"
+    prompt="Choose a value"
+    options={Ecto.Enum.values(Playground.Content.Post, :category)}
+  />
+  <:actions>
+    <.button>Save Post</.button>
+  </:actions>
+</.simple_form>
